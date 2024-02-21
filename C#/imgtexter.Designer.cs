@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(imgtexter));
             this.mainContainer = new System.Windows.Forms.SplitContainer();
-            this.folderButton = new System.Windows.Forms.Button();
-            this.severButton = new System.Windows.Forms.Button();
-            this.severNotButton = new System.Windows.Forms.Button();
-            this.numerationButton = new System.Windows.Forms.Button();
-            this.numerationNotButton = new System.Windows.Forms.Button();
             this.bigButtonContainer = new System.Windows.Forms.SplitContainer();
+            this.folderButton = new System.Windows.Forms.Button();
             this.middleContainer = new System.Windows.Forms.SplitContainer();
             this.numContainer = new System.Windows.Forms.SplitContainer();
+            this.numerationButton = new System.Windows.Forms.Button();
+            this.numerationNotButton = new System.Windows.Forms.Button();
             this.severContainer = new System.Windows.Forms.SplitContainer();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.severButton = new System.Windows.Forms.Button();
+            this.severNotButton = new System.Windows.Forms.Button();
             this.consoleBox = new System.Windows.Forms.RichTextBox();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).BeginInit();
             this.mainContainer.Panel1.SuspendLayout();
             this.mainContainer.Panel2.SuspendLayout();
@@ -81,88 +82,6 @@
             this.mainContainer.SplitterDistance = 180;
             this.mainContainer.TabIndex = 0;
             // 
-            // folderButton
-            // 
-            this.folderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.folderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.folderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.folderButton.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.folderButton.Location = new System.Drawing.Point(0, 0);
-            this.folderButton.Name = "folderButton";
-            this.folderButton.Size = new System.Drawing.Size(553, 87);
-            this.folderButton.TabIndex = 0;
-            this.folderButton.Text = "Выбрать папку";
-            this.folderButton.UseVisualStyleBackColor = false;
-            this.folderButton.Click += new System.EventHandler(this.folderButton_Click);
-            // 
-            // severButton
-            // 
-            this.severButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.severButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.severButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.severButton.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.severButton.Location = new System.Drawing.Point(0, 1);
-            this.severButton.Name = "severButton";
-            this.severButton.Size = new System.Drawing.Size(275, 40);
-            this.severButton.TabIndex = 1;
-            this.severButton.Text = "с разрывом страницы";
-            this.severButton.UseVisualStyleBackColor = false;
-            this.severButton.Click += new System.EventHandler(this.severButton_Click);
-            // 
-            // severNotButton
-            // 
-            this.severNotButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.severNotButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.severNotButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.severNotButton.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.severNotButton.Location = new System.Drawing.Point(1, 0);
-            this.severNotButton.Name = "severNotButton";
-            this.severNotButton.Size = new System.Drawing.Size(272, 42);
-            this.severNotButton.TabIndex = 2;
-            this.severNotButton.Text = "без разрыва страницы";
-            this.severNotButton.UseVisualStyleBackColor = false;
-            this.severNotButton.Click += new System.EventHandler(this.severNotButton_Click);
-            // 
-            // numerationButton
-            // 
-            this.numerationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numerationButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.numerationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numerationButton.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.numerationButton.Location = new System.Drawing.Point(0, 0);
-            this.numerationButton.Name = "numerationButton";
-            this.numerationButton.Size = new System.Drawing.Size(275, 43);
-            this.numerationButton.TabIndex = 3;
-            this.numerationButton.Text = "с нумерацией страниц";
-            this.numerationButton.UseVisualStyleBackColor = false;
-            this.numerationButton.Click += new System.EventHandler(this.numerationButton_Click);
-            // 
-            // numerationNotButton
-            // 
-            this.numerationNotButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numerationNotButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.numerationNotButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.numerationNotButton.FlatAppearance.BorderSize = 0;
-            this.numerationNotButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numerationNotButton.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.numerationNotButton.Location = new System.Drawing.Point(1, 0);
-            this.numerationNotButton.Name = "numerationNotButton";
-            this.numerationNotButton.Size = new System.Drawing.Size(272, 43);
-            this.numerationNotButton.TabIndex = 4;
-            this.numerationNotButton.Text = "без нумерации страниц";
-            this.numerationNotButton.UseVisualStyleBackColor = false;
-            this.numerationNotButton.Click += new System.EventHandler(this.numerationNotButton_Click);
-            // 
             // bigButtonContainer
             // 
             this.bigButtonContainer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -180,6 +99,22 @@
             this.bigButtonContainer.Size = new System.Drawing.Size(553, 180);
             this.bigButtonContainer.SplitterDistance = 87;
             this.bigButtonContainer.TabIndex = 0;
+            // 
+            // folderButton
+            // 
+            this.folderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.folderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.folderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.folderButton.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.folderButton.Location = new System.Drawing.Point(0, 0);
+            this.folderButton.Name = "folderButton";
+            this.folderButton.Size = new System.Drawing.Size(553, 87);
+            this.folderButton.TabIndex = 0;
+            this.folderButton.Text = "Выбрать папку";
+            this.folderButton.UseVisualStyleBackColor = false;
+            this.folderButton.Click += new System.EventHandler(this.folderButton_Click);
             // 
             // middleContainer
             // 
@@ -216,6 +151,40 @@
             this.numContainer.SplitterDistance = 276;
             this.numContainer.TabIndex = 0;
             // 
+            // numerationButton
+            // 
+            this.numerationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.numerationButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.numerationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numerationButton.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.numerationButton.Location = new System.Drawing.Point(0, 0);
+            this.numerationButton.Name = "numerationButton";
+            this.numerationButton.Size = new System.Drawing.Size(275, 43);
+            this.numerationButton.TabIndex = 3;
+            this.numerationButton.Text = "с нумерацией страниц";
+            this.numerationButton.UseVisualStyleBackColor = false;
+            this.numerationButton.Click += new System.EventHandler(this.numerationButton_Click);
+            // 
+            // numerationNotButton
+            // 
+            this.numerationNotButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.numerationNotButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.numerationNotButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.numerationNotButton.FlatAppearance.BorderSize = 0;
+            this.numerationNotButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numerationNotButton.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.numerationNotButton.Location = new System.Drawing.Point(1, 0);
+            this.numerationNotButton.Name = "numerationNotButton";
+            this.numerationNotButton.Size = new System.Drawing.Size(272, 43);
+            this.numerationNotButton.TabIndex = 4;
+            this.numerationNotButton.Text = "без нумерации страниц";
+            this.numerationNotButton.UseVisualStyleBackColor = false;
+            this.numerationNotButton.Click += new System.EventHandler(this.numerationNotButton_Click);
+            // 
             // severContainer
             // 
             this.severContainer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -233,6 +202,38 @@
             this.severContainer.SplitterDistance = 276;
             this.severContainer.TabIndex = 0;
             // 
+            // severButton
+            // 
+            this.severButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.severButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.severButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.severButton.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.severButton.Location = new System.Drawing.Point(0, 1);
+            this.severButton.Name = "severButton";
+            this.severButton.Size = new System.Drawing.Size(275, 40);
+            this.severButton.TabIndex = 1;
+            this.severButton.Text = "с разрывом страницы";
+            this.severButton.UseVisualStyleBackColor = false;
+            this.severButton.Click += new System.EventHandler(this.severButton_Click);
+            // 
+            // severNotButton
+            // 
+            this.severNotButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.severNotButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.severNotButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.severNotButton.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.severNotButton.Location = new System.Drawing.Point(1, 0);
+            this.severNotButton.Name = "severNotButton";
+            this.severNotButton.Size = new System.Drawing.Size(272, 42);
+            this.severNotButton.TabIndex = 2;
+            this.severNotButton.Text = "без разрыва страницы";
+            this.severNotButton.UseVisualStyleBackColor = false;
+            this.severNotButton.Click += new System.EventHandler(this.severNotButton_Click);
+            // 
             // consoleBox
             // 
             this.consoleBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -247,15 +248,16 @@
             this.consoleBox.TabIndex = 0;
             this.consoleBox.Text = "";
             // 
-            // Form1
+            // imgtexter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(553, 724);
             this.Controls.Add(this.mainContainer);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "imgtexter";
+            this.Text = "Overseeer";
             this.mainContainer.Panel1.ResumeLayout(false);
             this.mainContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).EndInit();

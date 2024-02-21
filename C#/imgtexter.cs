@@ -8,11 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Tesseract;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System.Threading;
 using System.Diagnostics;
+using Tesseract;
 
 namespace image_folder_to_text
 {
@@ -38,6 +38,7 @@ namespace image_folder_to_text
         {
             if (thread != null && thread.IsAlive)
                 thread.Abort();
+            Application.Exit();
         }
 
         private bool GoodLetter(string c) 
@@ -49,28 +50,28 @@ namespace image_folder_to_text
         //its very strange but i just rewrited it from python where its even somehow can looks like reasonable
         private string EditPage(string page)
         {
-            List<string> strs = new List<string>();
+            List<string> stringsOfPage = new List<string>();
             foreach (string paragraph in page.Split('\n'))
                 if (!string.IsNullOrWhiteSpace(paragraph) && !string.IsNullOrEmpty(paragraph))
-                    strs.Add(paragraph);
-            List<string> news = new List<string>() { strs[0] };
+                    stringsOfPage.Add(paragraph);
+            List<string> newStrings = new List<string>() { stringsOfPage[0] };
             var strangeSymbols = new string[] { ")", "»", "," };
 
-            for (int i = 1; i < strs.Count(); i++)
+            for (int i = 1; i < stringsOfPage.Count(); i++)
             {
-                int nlen = news.Count() - 1;
-                if (strs[i - 1].Last() == '-')
-                    news[nlen] = string.Join("" ,news[nlen].Take(nlen)) + strs[i];
-                else if (strs[i - 1].Last() == ' ')
-                    news[nlen] = strs[i];
+                int newLenght = newStrings.Count() - 1;
+                if (stringsOfPage[i - 1].Last() == '-')
+                    newStrings[newLenght] = string.Join("" ,newStrings[newLenght].Take(newLenght)) + stringsOfPage[i];
+                else if (stringsOfPage[i - 1].Last() == ' ')
+                    newStrings[newLenght] = stringsOfPage[i];
                 else if (
-                    (GoodLetter("" + strs[i - 1].Last()) && "" + strs[i][0] == ("" + strs[i][0]).ToLower()) ||
-                    (strangeSymbols.Contains("" + strs[i - 1].Last()) && GoodLetter("" + strs[i][0]))
-                    ) news[nlen] += ' ' + strs[i];
+                    (GoodLetter("" + stringsOfPage[i - 1].Last()) && "" + stringsOfPage[i][0] == ("" + stringsOfPage[i][0]).ToLower()) ||
+                    (strangeSymbols.Contains("" + stringsOfPage[i - 1].Last()) && GoodLetter("" + stringsOfPage[i][0]))
+                    ) newStrings[newLenght] += ' ' + stringsOfPage[i];
                 else
-                    news.Add(strs[i]);
+                    newStrings.Add(stringsOfPage[i]);
             }
-            return string.Join("\n", news.ToArray()).Replace('}', ')').Replace(']', ')').Replace('{', '(').Replace('[', '(');
+            return string.Join("\n", newStrings.ToArray()).Replace('}', ')').Replace(']', ')').Replace('{', '(').Replace('[', '(');
         }
 
         private string[] ReadPages(string path)
@@ -87,6 +88,8 @@ namespace image_folder_to_text
 
                 // should only be in folder that name is tessdata
                 string dir = Environment.CurrentDirectory + "\\tessdata";
+                //string dir = "C:\\Program Files\\Tesseract-OCR\\tessdata";
+                // https://github.com/tesseract-ocr/tessdata/blob/main/rus.traineddata
                 using (var engine = new TesseractEngine(dir, "rus"))
                 {
                     foreach(var photo in photos)
@@ -132,8 +135,8 @@ namespace image_folder_to_text
                 Invoke((MethodInvoker)delegate
                 {
                     consoleBox.SelectionColor = System.Drawing.Color.Red;
-                    consoleBox.AppendText("####### ERROR #######" + '\n' + error.ToString().Split('\n')[0] + '\n');
-                    //consoleBox.AppendText("####### ERROR #######" + '\n' + error.ToString() + '\n');
+                    //consoleBox.AppendText("####### ERROR #######" + '\n' + error.ToString().Split('\n')[0] + '\n');
+                    consoleBox.AppendText("####### ERROR #######" + '\n' + error.ToString() + '\n');
                 });
             }
             return null;
@@ -141,7 +144,6 @@ namespace image_folder_to_text
 
         private void WordWrite(string dirToSave, string[] pages)
         {
-            //using (StreamWriter writer = new StreamWriter(dirToSave + ".docx")) { }
             using (WordprocessingDocument document = WordprocessingDocument.Create(dirToSave, 
                 DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
             {
@@ -156,8 +158,11 @@ namespace image_folder_to_text
                         Paragraph par = new Paragraph(new Run(new Text(paragraph)));
                         body.Append(par);
                     }
-                    Paragraph pageBreak = new Paragraph(new Run(new Break() { Type = BreakValues.Page }));
-                    body.Append(pageBreak);
+                    if (severable)
+                    {
+                        Paragraph pageBreak = new Paragraph(new Run(new Break() { Type = BreakValues.Page }));
+                        body.Append(pageBreak);
+                    }
                 }
             }
         }
